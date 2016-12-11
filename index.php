@@ -245,7 +245,7 @@ if(isset($_SESSION['Nom']) { ?>
 						
             <div class="call-to-action">
             		<h2> <strong>Se connecter</strong></h2>
-                       <form method="post" action="login.php" style="padding: 3%;">
+                       <form method="post" action="authentification_client.php" style="padding: 3%;">
 <div align="center">
 Login &nbsp;&nbsp;<br/><input required="required" type="text" style="width:30%" class="bg-dark" name="login" id="login">
 </div>
