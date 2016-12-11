@@ -13,12 +13,19 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
 
 	
 	</head>
 	<body class="homepage">
 <div id="page-wrapper">
 
+
+<? php
+
+SESSION_START();
+if(isset($_SESSION['Nom']) { echo("hhh");}
+	?>
 	<!-- Header -->
   <div id="header-wrapper">
 					<div id="header" class="container">
@@ -71,6 +78,26 @@ function myFunction() {
       
     </div>
   </div>
+
+   <div class="modal fade" id="servModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn " data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
   
 
 
@@ -82,7 +109,20 @@ function myFunction() {
 									<li><a class="icon fa-cog" href="#ser"><span>Nos services</span></a></li>
 									<li><a class="icon fa-shopping-cart"   href="boutiques.php" ><span>Nos boutiques</span></a></li>
 									<li><a class="icon fa-envelope" href="contacteznous.php"><span>Contact</span></a></li>
+									
+<? php
+
+SESSION_START();
+if(isset($_SESSION['Nom']) { ?>	
+<!-- <li><a class="icon fa-sitemap" href=""><span>Déconnexion</span></a></li>-->
+                       			
+                       <? php } else { ?>
+
+
 									<li><a class="icon fa-sitemap" href="#connexion"><span>Connexion</span></a></li>
+									    <? php }  ?>
+									    
+
 								</ul>
 					  </nav>
 
@@ -114,16 +154,25 @@ function myFunction() {
 
 
 						  <form method="post" action="service.php">
-						<div class="row">
+					
+
+
+	<div class="row">
 							<div class="4u 12u(mobile)">
                            
 		  
 
 								<!-- Feature -->
 									<section>
+									<?php
+									$service="service"
+									?>
+									
+								<section>
 
-										<a href="service.php" class="image featured"><img src="images/tuile_babysitting.png" alt="" /></a>
+										<a  data-toggle="modal" data-target="#servModal"  href="service.php" class="image featured"><img src="images/tuile_babysitting.png" alt="" /></a>
 
+							  
 							  </section>
 
 						  </div>
@@ -132,7 +181,7 @@ function myFunction() {
 								<!-- Feature -->
 									<section>
 
-										<a href="service.php" class="image featured"><img src="images/tuile_coiffure.png" alt="" /></a>
+										<a href="<?php echo "service.php?service=coiffure" ?>" class="image featured"><img src="images/tuile_coiffure.png" alt="" /></a>
 
 									</section>
 
@@ -141,7 +190,7 @@ function myFunction() {
 
 								<!-- Feature -->
 									<section>
-										<a href="service.php" class="image featured"><img src="images/tuile_electricite.png" alt="" /></a>
+										<a href="<?php echo "service.php?service=electricite" ?>" class="image featured"><img src="images/tuile_electricite.png" alt="" /></a>
 										
 
 							</div>
@@ -161,7 +210,7 @@ function myFunction() {
 
 								<!-- Feature -->
 									<section>
-										<a href="service.php" class="image featured"><img src="images/tuile_jardinage.png" alt="" /></a>
+										<a href="<?php echo "service.php?service=jardinage" ?>" class="image featured"><img src="images/tuile_jardinage.png" alt="" /></a>
 
 
 									</section>
@@ -171,12 +220,14 @@ function myFunction() {
 
 								<!-- Feature -->
 									<section>
-										<a href="map.html" class="image featured"><img src="images/tuile_plomberie.png" alt="" /></a>
+										<a href="<?php echo "service.php?service=plombrie" ?>" class="image featured"><img src="images/tuile_plomberie.png" alt="" /></a>
 
 									</section>
 
 							</div>
 						</div>
+
+
 					</form>
 						<ul class="actions">
 							<li><a href="#" class="button icon " style="padding: 2%;"><i class="fa fa-plus" aria-hidden="true"></i> Voir plus de service</a></li>
@@ -193,18 +244,18 @@ function myFunction() {
 						
 						
             <div class="call-to-action">
-            		<h2> <strong>Se connecter </strong></h2>
-                       <form method="post" action="config/connect.php" style="padding: 3%;">
+            		<h2> <strong>Se connecter</strong></h2>
+                       <form method="post" action="login.php" style="padding: 3%;">
 <div align="center">
-Adresse mail &nbsp;&nbsp;<br/><input required="required" type="email" style="width:30%" class="bg-dark" name="util">
+Login &nbsp;&nbsp;<br/><input required="required" type="text" style="width:30%" class="bg-dark" name="login" id="login">
 </div>
 <br/>
 <div align="center">
-Mot de passe <br/><input required="required" class="bg-dark" style="width:30%" type="password" name="pass">
+Mot de passe <br/><input required="required" class="bg-dark" style="width:30%" type="password" name="mdp" id="mdp">
 </div>
 <br/>
 <div align="center">
-               <input type="submit" onClick="pasuser(this.form)" value="Connexion" class="btn btn-default btn-xl wow tada">
+               <input type="submit" class="btn btn-default btn-xl wow tada">
 
 </div>
    			  </form>
